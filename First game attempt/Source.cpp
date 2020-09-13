@@ -94,7 +94,7 @@ int main(int argc, char* args[])
 		SDL_Rect rectangle1 = { SCREEN_WIDTH * 7/16, SCREEN_HEIGHT * 7/8, SCREEN_WIDTH / 8, SCREEN_HEIGHT / 8 };
 		SDL_SetRenderDrawColor(gameRenderer, 0x00, 0x00, 0x00, 0xFF);
 		SDL_RenderFillRect(gameRenderer, &rectangle1);
-		/*
+
 		vpLeft.x = 0;
 		vpLeft.y = 0;
 		vpLeft.w = SCREEN_WIDTH / 4;
@@ -111,7 +111,8 @@ int main(int argc, char* args[])
 
 		SDL_RenderCopy(gameRenderer, rendererTest, NULL, NULL);
 
-		*/
+		SDL_RenderSetViewport(gameRenderer, NULL);
+
 		//Puts everything on screen
 		SDL_RenderPresent(gameRenderer);
 	}
