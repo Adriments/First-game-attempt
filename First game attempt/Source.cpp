@@ -42,8 +42,27 @@ int main(int argc, char* args[])
 		{
 			if (e.type == SDL_QUIT)
 			{
-				printf("User Quit.");
+				printf("User Quit. \n");
 				quit = true;
+			}
+
+			//Shoots rectangle up screen.
+			if (e.type == SDL_KEYDOWN)
+			{
+				for (int i = 55; i > 0; --i)
+				{
+
+					SDL_Rect shot1 = { SCREEN_WIDTH * 31 / 64, SCREEN_HEIGHT * i / 64, SCREEN_WIDTH / 32, SCREEN_HEIGHT / 32 };
+					SDL_SetRenderDrawColor(gameRenderer, 0xFF, 0x00, 0x00, 0xFF);
+					SDL_RenderFillRect(gameRenderer, &shot1);
+
+					SDL_RenderPresent(gameRenderer);
+					
+					SDL_Delay(100);
+
+					SDL_SetRenderDrawColor(gameRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+					SDL_RenderFillRect(gameRenderer, &shot1);
+				}
 			}
 		}
 
@@ -52,12 +71,13 @@ int main(int argc, char* args[])
 		SDL_RenderClear(gameRenderer);
 
 		//Draws a rectangle
-		SDL_Rect rectangle1 = { SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
+		SDL_Rect rectangle1 = { SCREEN_WIDTH * 7/16, SCREEN_HEIGHT * 7/8, SCREEN_WIDTH / 8, SCREEN_HEIGHT / 8 };
 		SDL_SetRenderDrawColor(gameRenderer, 0x00, 0x00, 0x00, 0xFF);
 		SDL_RenderFillRect(gameRenderer, &rectangle1);
 
 		//Puts rectangle on screen
 		SDL_RenderPresent(gameRenderer);
+
 	}
 
 	SDL_DestroyRenderer(gameRenderer);
